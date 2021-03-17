@@ -146,11 +146,52 @@ int link(ListNode*& p1, ListNode* p2)
 	return OK;
 }
 
+int selKing(int sum,int n)//猴子选大王问题实现
+{
+	ListNode* p = new ListNode;
+	for (int i = 1; i <= sum; i++)//把所有猴子装到链表里
+	{
+		append(p, i);
+	}
+
+	ListNode* q = p;//备份一下开始的地址
+	while (p->next != NULL)
+	{
+
+		p = p->next;
 
 
+	}
+	p->next = q;//链表尾与头相连
+	p = p->next;//回到第一个
+
+	while (1)
+	{
+		if (p->next == p)//链表只剩它一个了，就退出循环
+		{
+			break;
+		}
+		else
+		{
+			for (int i = 1; i < n-1; i++)//循环，到第n个时删除当前节点
+			{
+				p = p->next;
+			}
+
+			//把前面的一个节点删出去
+			ListNode* pdel = p->next;
+			p->next = p->next->next;
+			delete(pdel);
+			p = p->next;
+		}
+	}
+	return p->val;
+
+}
 
 void main()
 {
+	cout<<selKing(17, 3);
 	ListNode* mynode = new ListNode;
 	int temp;
 	while (cin >> temp)
