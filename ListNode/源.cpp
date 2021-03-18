@@ -131,7 +131,7 @@ int reverse(ListNode*& p)
 
 	}
 	oldnext2->next = oldnext;
-	p = oldnext2;
+	p = oldnext2;//最后一个节点变成头指针
 	return OK;
 }
 
@@ -191,7 +191,10 @@ int selKing(int sum,int n)//猴子选大王问题实现
 
 void main()
 {
-	cout<<selKing(17, 3);
+	int sum, n;
+	cin >> sum >> n;
+	cout << selKing(sum, n);
+	/*cout<<selKing(17, 3);
 	ListNode* mynode = new ListNode;
 	int temp;
 	while (cin >> temp)
@@ -218,5 +221,5 @@ void main()
 	del(mynode, 4);
 	explore(mynode);
 	reverse(mynode);
-	explore(mynode);
+	explore(mynode);*/
 }
